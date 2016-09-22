@@ -87,27 +87,6 @@ if (CPPTOML_HAS_STD_REGEX)
   target_compile_definitions(cpptoml INTERFACE -DCPPTOML_HAS_STD_REGEX=1)
 endif()
 
-add_executable(parse parse.cpp)
-target_link_libraries(parse cpptoml)
-set_target_properties(parse PROPERTIES
-  CXX_STANDARD 11
-  CXX_EXTENSIONS OFF
-  CXX_STANDARD_REQUIRED YES)
-
-add_executable(cpptoml-parser parse_stdin.cpp)
-target_link_libraries(cpptoml-parser cpptoml)
-set_target_properties(cpptoml-parser PROPERTIES
-  CXX_STANDARD 11
-  CXX_EXTENSIONS OFF
-  CXX_STANDARD_REQUIRED YES)
-
-add_executable(cpptoml-build build_toml.cpp)
-target_link_libraries(cpptoml-build cpptoml)
-set_target_properties(cpptoml-build PROPERTIES
-  CXX_STANDARD 11
-  CXX_EXTENSIONS OFF
-  CXX_STANDARD_REQUIRED YES)
-
 find_package(Doxygen)
 if(DOXYGEN_FOUND AND NOT TARGET doc)
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cpptoml.doxygen.in
