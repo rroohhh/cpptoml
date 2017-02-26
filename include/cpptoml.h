@@ -21,7 +21,9 @@
 #include <unordered_map>
 #include <vector>
 
-#if __cplusplus > 201103L
+#if defined(__INTEL_COMPILER)
+#define CPPTOML_DEPRECATED(reason)
+#elif __cplusplus > 201103L
 #define CPPTOML_DEPRECATED(reason) [[deprecated(reason)]]
 #elif defined(__clang__)
 #define CPPTOML_DEPRECATED(reason) __attribute__((deprecated(reason)))
